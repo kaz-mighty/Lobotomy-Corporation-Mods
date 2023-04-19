@@ -69,13 +69,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Info\en\Info.xml" />
-    <Content Include="Info\jp\Info.xml" />
+    <Content Include="Resource\Info\en\Info.xml" />
+    <Content Include="Resource\Info\jp\Info.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\assets" />
   </ItemGroup>
   <Import Project="..\Common\Common.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>robocopy "$(ProjectDir)\Info" "$(TargetDir)\Info" * /xo /E /COPY:DT
+    <PostBuildEvent>robocopy "$(ProjectDir)\Resource" "$(TargetDir)\" * /xo /E /COPY:DT
 IF %25ERRORLEVEL%25 LSS 8 EXIT 0</PostBuildEvent>
   </PropertyGroup>
 </Project>
