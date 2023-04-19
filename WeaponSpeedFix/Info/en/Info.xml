@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <name>Weapon Speed Fix</name>
+    <descs>
+        <desc>[machine translation]</desc>
+        <desc>A mod that modifies all weapons (23 types) that have unique animations and do not change attack speed with justice so that the speed changes.</desc>
+        <desc>(The pistol type also does not change, but this is not supported.)</desc>
+        <desc></desc>
+        <desc>Author: kaz_mighty</desc>
+    </descs>
+</info>

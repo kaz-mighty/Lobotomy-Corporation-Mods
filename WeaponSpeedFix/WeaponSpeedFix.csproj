@@ -62,6 +62,10 @@
     <Compile Include="WeaponSpeedFix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Info\en\Info.xml" />
+    <Content Include="Info\jp\Info.xml" />
+  </ItemGroup>
   <Import Project="..\Common\Common.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

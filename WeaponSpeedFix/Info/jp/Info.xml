@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <name>Weapon Speed Fix</name>
+    <descs>
+        <desc>独自アニメーションを持つ、正義で攻撃速度が変化しない武器全て(23種)を速度が変化するように修正するMod。</desc>
+        <desc>(ピストル系も変化しませんが、こちらは未対応です。)</desc>
+        <desc></desc>
+        <desc>Author: kaz_mighty</desc>
+    </descs>
+</info>
