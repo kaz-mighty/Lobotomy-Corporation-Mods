@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <inherit>
+    <stat>
+      <!--
+        inherited stat = stat * ratio + initialValue * addInitialRatio + addValue
+        However, it will not increase over the original stat.
+        initialValue is 15, after Hod suppression is 45.
+      -->
+      <ratio>1.0</ratio>
+      <addInitialRatio>0.0</addInitialRatio>
+      <addValue>0</addValue>
+    </stat>
+    <!-- Setting equipment to false will remove the equipment, but not delete it. -->
+    <equipment>true</equipment>
+    <!-- Whether to inherit the gift or not -->
+    <gift>true</gift>
+  </inherit>
+  <!-- 
+    If True, sort by AgentID (employment order).
+    If False, probably in order of assignment, with unassigned added last.
+  -->
+  <sort>false</sort>
+</config>
