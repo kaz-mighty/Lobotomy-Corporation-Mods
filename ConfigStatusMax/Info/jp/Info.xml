@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <name>Configurable Status Max</name>
+    <descs>
+        <desc>ステータスの最大値と成長率を変更します。</desc>
+        <desc>値はxmlファイルで設定可能です。</desc>
+        <desc></desc>
+        <desc>Author: kaz_mighty</desc>
+    </descs>
+</info>

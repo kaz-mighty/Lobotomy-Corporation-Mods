@@ -16,11 +16,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InheritAgent", "InheritAgent\InheritAgent.csproj", "{69F91965-349D-40C9-9B98-7BA25F9E45CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigStatusMax", "ConfigStatusMax\ConfigStatusMax.csproj", "{A6EA2A89-76B9-4BEF-AFBE-55F0B54C5FCF}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Common\Common.projitems*{2ecff0ba-000b-418c-9e5a-f912b9a53822}*SharedItemsImports = 13
 		Common\Common.projitems*{69f91965-349d-40c9-9b98-7ba25f9e45cb}*SharedItemsImports = 4
 		Common\Common.projitems*{9a43340e-777b-46d8-999c-3711164eb62f}*SharedItemsImports = 4
+		Common\Common.projitems*{a6ea2a89-76b9-4bef-afbe-55f0b54c5fcf}*SharedItemsImports = 4
 		Common\Common.projitems*{f4248f93-fc3e-42b1-90b0-478166ed8d4c}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +43,10 @@ Global
 		{69F91965-349D-40C9-9B98-7BA25F9E45CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69F91965-349D-40C9-9B98-7BA25F9E45CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69F91965-349D-40C9-9B98-7BA25F9E45CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6EA2A89-76B9-4BEF-AFBE-55F0B54C5FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6EA2A89-76B9-4BEF-AFBE-55F0B54C5FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6EA2A89-76B9-4BEF-AFBE-55F0B54C5FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6EA2A89-76B9-4BEF-AFBE-55F0B54C5FCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

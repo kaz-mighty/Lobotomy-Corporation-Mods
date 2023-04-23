@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <maxStat>
+    <value>100</value><!--default-->
+    <value>120</value><!--hokma upgrade-->
+    <value>130</value><!--hokma suppress-->
+    <value>150</value><!--after 50 day-->
+    <value>150</value><!--after The Seed of Light 100%-->
+  </maxStat>
+  <statLevel>
+    <rank orMore="0" growthRate="0.6">
+      <!--Not yet implemented-->
+      <upgrade cost ="0" min="15" max="15"/>
+    </rank>
+    <rank orMore="30" growthRate="0.55"/>
+    <rank orMore="45" growthRate="0.5"/>
+    <rank orMore="65" growthRate="0.45"/>
+    <rank orMore="85" growthRate="0.4"/>
+    <rank orMore="100" growthRate="0.4"/>
+  </statLevel>
+  <upgradeMaxLevel>7</upgradeMaxLevel>
+</config>
