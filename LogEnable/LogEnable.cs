@@ -23,6 +23,11 @@ namespace LogEnable
 
 		private void MessageHandler(string logString, string stackTrace, LogType type)
 		{
+			// Ignore them because they are too numerous and disturbing.
+			if (logString.Contains("resources.assets' is corrupted! Remove it and launch unity again!"))
+			{
+				return;
+			}
 			FileLog.Log(string.Format("{0} : {1}{2}", type.ToString(), logString, Environment.NewLine));
 			if (type != LogType.Log && stackTrace != "")
 			{
