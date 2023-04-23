@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <info>
-    <name>InheritAgent</name>
+    <name>Inherit Agent</name>
     <descs>
         <desc>1日目から始めたときに前回のエージェントを引き継ぎます。</desc>
         <desc>引き継ぐ内容はxmlファイルで設定可能です。</desc>

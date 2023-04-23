@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <info>
-    <name>InheritAgent</name>
+    <name>Inherit Agent</name>
     <descs>
         <desc>[machine translation]</desc>
         <desc>When you start on day 1, the previous agent is taken over.</desc>
