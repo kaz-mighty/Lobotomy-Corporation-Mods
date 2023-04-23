@@ -15,10 +15,6 @@ namespace WeaponSpeedFix
 		{
 			try
 			{
-				if (State.IsDebug)
-				{
-					FileLog.Reset();
-				}
 				var harmony = HarmonyInstance.Create("kaz_mighty.WeaponSpeedFix");
 				var assembly = Assembly.GetExecutingAssembly();
 				harmony.PatchAll(assembly);
@@ -49,7 +45,7 @@ namespace WeaponSpeedFix
 				var assetNames = assetBundle.GetAllAssetNames();
 				foreach (string assetName in assetNames)
 				{
-					FileLog.Log(assetName);
+					Debug.Log(assetName);
 				}
 			}
 			return true;
@@ -65,14 +61,14 @@ namespace WeaponSpeedFix
 					__instance.animator = WorkerSpineAnimatorData_Patch.assetBundle.LoadAsset<RuntimeAnimatorController>(animatorSrc);
 					if (State.IsDebug)
 					{
-						FileLog.Log(string.Format("Loaded Asset. (id = {0}, name = {1})", __instance.id, __instance.name));
+						Debug.Log(string.Format("Loaded Asset. (id = {0}, name = {1})", __instance.id, __instance.name));
 					}
 				}
 				else
 				{
 					if (State.IsDebug)
 					{
-						FileLog.Log(string.Format("Not loaded Asset. (id = {0}, name = {1})", __instance.id, __instance.name));
+						Debug.Log(string.Format("Not loaded Asset. (id = {0}, name = {1})", __instance.id, __instance.name));
 					}
 				}
 			}
