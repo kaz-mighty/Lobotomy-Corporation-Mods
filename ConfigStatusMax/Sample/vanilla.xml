@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- This is the same setting as vanilla (no mod). -->
 <config>
   <maxStat>
     <value>100</value><!--default-->
     <value>120</value><!--hokma upgrade-->
     <value>130</value><!--hokma suppress-->
-    <value>150</value><!--after 50 day clear-->
-    <value>180</value><!--after The Seed of Light 100%-->
+    <value>130</value><!--after 50 day clear-->
+    <value>130</value><!--after The Seed of Light 100%-->
   </maxStat>
   <statLevel>
     <!-- min is inclusive, but max is exclusive. -->
@@ -25,22 +26,13 @@
       <upgrade cost ="4" min="85" max="92"/>
     </rank>
     <rank orMore="100" growthRate="0.4">
-      <upgrade cost ="6" min="110" max="129"/>
-    </rank>
-    <rank orMore="130" growthRate="0.2">
-      <upgrade cost ="8" min="130" max="140"/>
-    </rank>
-    <rank orMore="150" growthRate="0.15">
-      <upgrade cost ="10" min="150" max="155"/>
-    </rank>
-    <rank orMore="170" growthRate="0.12">
-      <upgrade cost ="12" min="170" max="175"/>
+      <upgrade cost ="6" min="110" max="130"/>
     </rank>
   </statLevel>
   <upgradeMaxLevel>
     <value>5</value><!--default-->
     <value>6</value><!--hokma suppress-->
-    <value>7</value><!--after 50 day clear-->
-    <value>8</value><!--after The Seed of Light 100%-->
+    <value>6</value><!--after 50 day clear-->
+    <value>6</value><!--after The Seed of Light 100%-->
   </upgradeMaxLevel>
 </config>
