@@ -8,9 +8,10 @@
     <value>180</value><!--after The Seed of Light 100%-->
   </maxStat>
   <statLevel>
+    <!-- The number of levels can be increased as much as you want. -->
     <!-- min is inclusive, but max is exclusive. -->
     <level orMore="0" growthRate="0.6">
-      <upgrade cost ="0" min="15" max="15"/>
+      <upgrade cost ="0" min="15" max="16"/>
     </level>
     <level orMore="30" growthRate="0.55">
       <upgrade cost ="1" min="30" max="37"/>
@@ -25,7 +26,7 @@
       <upgrade cost ="4" min="85" max="92"/>
     </level>
     <level orMore="100" growthRate="0.4">
-      <upgrade cost ="6" min="110" max="129"/>
+      <upgrade cost ="6" min="110" max="120"/>
     </level>
     <level orMore="130" growthRate="0.2">
       <upgrade cost ="8" min="130" max="140"/>
@@ -38,9 +39,10 @@
     </level>
   </statLevel>
   <upgradeMaxLevel>
+    <!-- The value has to be less than or equal to the number of levels. -->
     <value>5</value><!--default-->
     <value>6</value><!--hokma suppress-->
-    <value>7</value><!--after 50 day clear-->
-    <value>8</value><!--after The Seed of Light 100%-->
+    <value>6</value><!--after 50 day clear-->
+    <value>6</value><!--after The Seed of Light 100%-->
   </upgradeMaxLevel>
 </config>

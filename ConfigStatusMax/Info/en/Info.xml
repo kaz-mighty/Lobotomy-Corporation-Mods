@@ -3,7 +3,8 @@
     <name>Configurable Status Max</name>
     <descs>
         <desc>[machine translation]</desc>
-        <desc>(template)</desc>
+        <desc>Allows to change the maximum status and growth rate, etc.</desc>
+        <desc>Values can be set in xml files.</desc>
         <desc></desc>
         <desc>Author: kaz_mighty</desc>
     </descs>

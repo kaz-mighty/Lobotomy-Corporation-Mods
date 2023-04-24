@@ -9,8 +9,7 @@ using AssemblyState;
 
 
 /* TODO:
- * xmlが見づらいのをなんとかしたい
- * xmlサンプルを追加、デフォルトを単にステータス上限を上げるだけにするなど
+ * xmlが設定しづらいのでなんとかする
  */
 namespace ConfigStatusMax
 {
