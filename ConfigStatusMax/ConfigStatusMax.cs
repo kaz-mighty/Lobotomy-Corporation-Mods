@@ -11,7 +11,6 @@ using AssemblyState;
 /* TODO:
  * xmlが見づらいのをなんとかしたい
  * xmlサンプルを追加、デフォルトを単にステータス上限を上げるだけにするなど
- * 文字のパッチ
  */
 namespace ConfigStatusMax
 {
@@ -55,6 +54,11 @@ namespace ConfigStatusMax
 				targetClass = typeof(Customizing.StatUI);
 				target = targetClass.GetProperty("MaxStatLevel").GetGetMethod();
 				prefix = new HarmonyMethod(patchClass.GetMethod("GetMaxStatLevel"));
+				harmony.Patch(target, prefix, null);
+
+				targetClass = typeof(Customizing.StatUI.StatController);
+				target = targetClass.GetMethod("SetGradeText");
+				prefix = new HarmonyMethod(patchClass.GetMethod("SetGradeText"));
 				harmony.Patch(target, prefix, null);
 
 				targetClass = typeof(Customizing.CustomizingWindow);
@@ -367,6 +371,16 @@ namespace ConfigStatusMax
 				__result = upgradeMaxLevel[0];
 			}
 			return false;
+		}
+
+		public static bool SetGradeText(Customizing.StatUI.StatController __instance, int level)
+		{
+			if (level >= 6)
+			{
+				__instance.GradeText.text = "EX" + (level-5).ToString();
+				return false;
+			}
+			return true;
 		}
 
 		public static bool SetAgentStatBonus(AgentModel agent, Customizing.AgentData data)
