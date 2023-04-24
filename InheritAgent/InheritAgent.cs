@@ -63,7 +63,15 @@ namespace InheritAgent
 		static void LoadDataOnlyAgent(GlobalGameManager instance)
 		{
 			Traverse.Create(instance).Method("LoadData_prepprocess").GetValue();
-			Dictionary<string, object> dic = instance.LoadSaveFile();
+			Dictionary<string, object> dic;
+			try
+			{
+				dic = instance.LoadSaveFile();
+			}
+			catch (FileReadException)
+			{
+				return;
+			}
 			string saveVer = "old";
 			GameUtil.TryGetValue(dic, "saveVer", ref saveVer);
 			int lastDay = 0;
