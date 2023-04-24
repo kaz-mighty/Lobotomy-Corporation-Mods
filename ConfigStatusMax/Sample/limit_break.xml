@@ -15,96 +15,96 @@
   </maxStat>
   <statLevel>
     <!-- min is inclusive, but max is exclusive. -->
-    <rank orMore="0" growthRate="0.6">
+    <level orMore="0" growthRate="0.6">
       <upgrade cost ="0" min="15" max="16"/>
-    </rank>
-    <rank orMore="30" growthRate="0.55">
+    </level>
+    <level orMore="30" growthRate="0.55">
       <upgrade cost ="1" min="30" max="37"/>
-    </rank>
-    <rank orMore="45" growthRate="0.5">
+    </level>
+    <level orMore="45" growthRate="0.5">
       <upgrade cost ="2" min="45" max="55"/>
-    </rank>
-    <rank orMore="65" growthRate="0.45">
+    </level>
+    <level orMore="65" growthRate="0.45">
       <upgrade cost ="3" min="65" max="75"/>
-    </rank>
-    <rank orMore="85" growthRate="0.4">
+    </level>
+    <level orMore="85" growthRate="0.4">
       <upgrade cost ="4" min="85" max="92"/>
-    </rank>
-    <rank orMore="100" growthRate="0.6">
+    </level>
+    <level orMore="100" growthRate="0.6">
       <upgrade cost ="6" min="100" max="110"/>
-    </rank>
-    <rank orMore="136" growthRate="0.6">
+    </level>
+    <level orMore="136" growthRate="0.6">
       <upgrade cost ="7" min="136" max="146"/>
-    </rank>
-    <rank orMore="172" growthRate="0.6">
+    </level>
+    <level orMore="172" growthRate="0.6">
       <upgrade cost ="8" min="172" max="182"/>
-    </rank>
-    <rank orMore="208" growthRate="0.6">
+    </level>
+    <level orMore="208" growthRate="0.6">
       <upgrade cost ="9" min="208" max="218"/>
-    </rank>
-    <rank orMore="244" growthRate="0.6">
+    </level>
+    <level orMore="244" growthRate="0.6">
       <upgrade cost ="10" min="244" max="254"/>
-    </rank>
-    <rank orMore="280" growthRate="0.6">
+    </level>
+    <level orMore="280" growthRate="0.6">
       <upgrade cost ="11" min="280" max="290"/>
-    </rank>
-    <rank orMore="316" growthRate="0.6">
+    </level>
+    <level orMore="316" growthRate="0.6">
       <upgrade cost ="12" min="316" max="326"/>
-    </rank>
-    <rank orMore="352" growthRate="0.6">
+    </level>
+    <level orMore="352" growthRate="0.6">
       <upgrade cost ="13" min="352" max="362"/>
-    </rank>
-    <rank orMore="388" growthRate="0.6">
+    </level>
+    <level orMore="388" growthRate="0.6">
       <upgrade cost ="14" min="388" max="398"/>
-    </rank>
-    <rank orMore="424" growthRate="0.6">
+    </level>
+    <level orMore="424" growthRate="0.6">
       <upgrade cost ="15" min="424" max="434"/>
-    </rank>
-    <rank orMore="460" growthRate="0.6">
+    </level>
+    <level orMore="460" growthRate="0.6">
       <upgrade cost ="16" min="460" max="470"/>
-    </rank>
-    <rank orMore="496" growthRate="0.6">
+    </level>
+    <level orMore="496" growthRate="0.6">
       <upgrade cost ="17" min="496" max="506"/>
-    </rank>
-    <rank orMore="532" growthRate="0.6">
+    </level>
+    <level orMore="532" growthRate="0.6">
       <upgrade cost ="18" min="532" max="542"/>
-    </rank>
-    <rank orMore="568" growthRate="0.6">
+    </level>
+    <level orMore="568" growthRate="0.6">
       <upgrade cost ="19" min="568" max="578"/>
-    </rank>
-    <rank orMore="604" growthRate="0.6">
+    </level>
+    <level orMore="604" growthRate="0.6">
       <upgrade cost ="20" min="604" max="614"/>
-    </rank>
-    <rank orMore="640" growthRate="0.6">
+    </level>
+    <level orMore="640" growthRate="0.6">
       <upgrade cost ="21" min="640" max="650"/>
-    </rank>
-    <rank orMore="676" growthRate="0.6">
+    </level>
+    <level orMore="676" growthRate="0.6">
       <upgrade cost ="22" min="676" max="686"/>
-    </rank>
-    <rank orMore="712" growthRate="0.6">
+    </level>
+    <level orMore="712" growthRate="0.6">
       <upgrade cost ="23" min="712" max="722"/>
-    </rank>
-    <rank orMore="748" growthRate="0.6">
+    </level>
+    <level orMore="748" growthRate="0.6">
       <upgrade cost ="24" min="748" max="758"/>
-    </rank>
-    <rank orMore="784" growthRate="0.6">
+    </level>
+    <level orMore="784" growthRate="0.6">
       <upgrade cost ="25" min="784" max="794"/>
-    </rank>
-    <rank orMore="820" growthRate="0.6">
+    </level>
+    <level orMore="820" growthRate="0.6">
       <upgrade cost ="26" min="820" max="830"/>
-    </rank>
-    <rank orMore="856" growthRate="0.6">
+    </level>
+    <level orMore="856" growthRate="0.6">
       <upgrade cost ="27" min="856" max="866"/>
-    </rank>
-    <rank orMore="892" growthRate="0.6">
+    </level>
+    <level orMore="892" growthRate="0.6">
       <upgrade cost ="28" min="892" max="902"/>
-    </rank>
-    <rank orMore="928" growthRate="0.6">
+    </level>
+    <level orMore="928" growthRate="0.6">
       <upgrade cost ="29" min="928" max="938"/>
-    </rank>
-    <rank orMore="964" growthRate="0.6">
+    </level>
+    <level orMore="964" growthRate="0.6">
       <upgrade cost ="30" min="964" max="974"/>
-    </rank>
+    </level>
   </statLevel>
   <upgradeMaxLevel>
     <value>5</value><!--default-->

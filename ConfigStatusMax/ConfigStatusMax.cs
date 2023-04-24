@@ -122,12 +122,12 @@ namespace ConfigStatusMax
 			var xml = new XmlDocument();
 			xml.Load(filePath);
 
-			var maxStatNode = xml.SelectSingleNode("config/maxStat");
-			if (maxStatNode == null)
+			var currentNode = xml.SelectSingleNode("config/maxStat");
+			if (currentNode == null)
 			{
 				throw new XmlException(@"Not found tag ""coufig/maxStat"".");
 			}
-			var valueNodes = maxStatNode.SelectNodes("value");
+			var valueNodes = currentNode.SelectNodes("value");
 			for(var i = 0; i < maxStatValue.Length; i++)
 			{
 				var valueNode = valueNodes[i];
@@ -138,25 +138,25 @@ namespace ConfigStatusMax
 				Harmony_Patch.maxStatValue[i] = int.Parse(valueNode.InnerText);
 			}
 
-			var statLevelNode = xml.SelectSingleNode("config/statLevel");
-			if (statLevelNode == null)
+			currentNode = xml.SelectSingleNode("config/statLevel");
+			if (currentNode == null)
 			{
 				throw new XmlException(@"Not found tag ""config/statLevel"".");
 			}
-			StatLevel.rankDataList.Clear();
-			var rankNodes = statLevelNode.SelectNodes("rank");
-			foreach(XmlNode rankNode in rankNodes)
+			StatLevel.levelDataList.Clear();
+			var levelNodes = currentNode.SelectNodes("level");
+			foreach(XmlNode levelNode in levelNodes)
 			{
-				StatLevel.rankDataList.Add(new RankData(rankNode));
+				StatLevel.levelDataList.Add(new LevelData(levelNode));
 			}
 			StatLevel.InitCost();
 
-			var maxLevelNode = xml.SelectSingleNode("config/upgradeMaxLevel");
-			if (maxLevelNode == null)
+			currentNode = xml.SelectSingleNode("config/upgradeMaxLevel");
+			if (currentNode == null)
 			{
 				throw new XmlException(@"Not found tag ""config/upgradeMaxLevel"".");
 			}
-			valueNodes = maxLevelNode.SelectNodes("value");
+			valueNodes = currentNode.SelectNodes("value");
 			for (var i = 0; i < StatLevel.upgradeMaxLevel.Length; i++)
 			{
 				var valueNode = valueNodes[i];
@@ -165,9 +165,9 @@ namespace ConfigStatusMax
 					throw new XmlException(@"Not enough ""value"" tags of tag ""config/upgradeMaxLevel"".");
 				}
 				StatLevel.upgradeMaxLevel[i] = int.Parse(valueNode.InnerText);
-				if (StatLevel.upgradeMaxLevel[i] > StatLevel.rankDataList.Count)
+				if (StatLevel.upgradeMaxLevel[i] > StatLevel.levelDataList.Count)
 				{
-					throw new XmlException(@"The value of tag ""upgradeMaxLevel/value"" is greater than the number of tag ""rank"".");
+					throw new XmlException(@"The value of tag ""upgradeMaxLevel/value"" is greater than the number of tag ""level"".");
 				}
 			}
 
@@ -180,9 +180,9 @@ namespace ConfigStatusMax
 				}
 				Debug.Log(log);
 
-				foreach (var rankdata in StatLevel.rankDataList)
+				foreach (var levelData in StatLevel.levelDataList)
 				{
-					Debug.Log(rankdata.ToString());
+					Debug.Log(levelData.ToString());
 				}
 
 				log = "upgradeMaxLevel: ";
@@ -198,14 +198,14 @@ namespace ConfigStatusMax
 
 	}
 
-	public struct RankData
+	public struct LevelData
 	{
 		public readonly int orMore;
 		public readonly float growthRate;
 		public readonly int upgradeCost;
 		public readonly int upgradeMin;
 		public readonly int upgradeMax;
-		public RankData(int p1, float p2, int p3, int p4, int p5)
+		public LevelData(int p1, float p2, int p3, int p4, int p5)
 		{
 			orMore = p1;
 			growthRate = p2;
@@ -213,15 +213,15 @@ namespace ConfigStatusMax
 			upgradeMin = p4;
 			upgradeMax = p5;
 		}
-		public RankData(XmlNode node)
+		public LevelData(XmlNode node)
 		{
 			var attributes = node.Attributes;
 			if (!int.TryParse(attributes.GetNamedItem("orMore").InnerText, out orMore))
 			{
-				throw new XmlException(@"Element ""orMore"" of tag ""config/statLevel/rank"" is missing or not int.");
+				throw new XmlException(@"Element ""orMore"" of tag ""config/statLevel/level"" is missing or not int.");
 			}
 			if (!float.TryParse(attributes.GetNamedItem("growthRate").InnerText, out growthRate)){
-				throw new XmlException(@"Element ""growthRate"" of tag ""config/statLevel/rank"" is missing or not float.");
+				throw new XmlException(@"Element ""growthRate"" of tag ""config/statLevel/level"" is missing or not float.");
 			}
 			attributes = node.SelectSingleNode("upgrade")?.Attributes;
 			if (attributes == null)
@@ -250,19 +250,19 @@ namespace ConfigStatusMax
 
 	public static class StatLevel
 	{
-		public static List<RankData> rankDataList = new List<RankData>();
+		public static List<LevelData> levelDataList = new List<LevelData>();
 		public static int[] upgradeMaxLevel = { 5, 6, 6, 6 };
 		public static float[] diffGrowthRate = { 1.4f, 1.2f, 1f, 1f, 0.8f, 0.6f, 0.4f, 0.2f };
 
 		
 		public static void InitCost()
 		{
-			var costN = new int[rankDataList.Count];
-			var costP = new int[rankDataList.Count];
-			for (var i = 0; i < rankDataList.Count; i++)
+			var costN = new int[levelDataList.Count];
+			var costP = new int[levelDataList.Count];
+			for (var i = 0; i < levelDataList.Count; i++)
 			{
-				costN[i] = rankDataList[i].upgradeCost;
-				costP[i] = rankDataList[i].upgradeCost * 3;
+				costN[i] = levelDataList[i].upgradeCost;
+				costP[i] = levelDataList[i].upgradeCost * 3;
 			}
 			Customizing.StatUI.RCost = costN;
 			Customizing.StatUI.WCost = costN;
@@ -273,11 +273,11 @@ namespace ConfigStatusMax
 
 		public static bool CalculateStatLevel(ref int __result, int stat)
 		{
-			var i = Math.Min(5, rankDataList.Count) - 1;
+			var i = Math.Min(5, levelDataList.Count) - 1;
 			__result = 1;
 			for (; i >= 0; i--)
 			{
-				if (stat >= rankDataList[i].orMore)
+				if (stat >= levelDataList[i].orMore)
 				{
 					__result = i + 1;
 					break;
@@ -289,9 +289,9 @@ namespace ConfigStatusMax
 		public static bool CalculateStatLevelForCustomizing(ref int __result, int stat)
 		{
 			__result = 1;
-			for (var i = rankDataList.Count - 1; i >= 0; i--)
+			for (var i = levelDataList.Count - 1; i >= 0; i--)
 			{
-				if (stat >= rankDataList[i].orMore)
+				if (stat >= levelDataList[i].orMore)
 				{
 					__result = i + 1;
 					break;
@@ -328,13 +328,13 @@ namespace ConfigStatusMax
 			}
 
 			var growthRate = 0.6f;
-			if (statLevelEx <= 0 || statLevelEx > rankDataList.Count)
+			if (statLevelEx <= 0 || statLevelEx > levelDataList.Count)
 			{
 				Debug.LogError("statLevelEx is Out of Range!");
 			}
 			else
 			{
-				growthRate = rankDataList[statLevelEx - 1].growthRate;
+				growthRate = levelDataList[statLevelEx - 1].growthRate;
 			}
 			expMulti *= growthRate;
 			if (rwbpType == RwbpType.P)
@@ -401,13 +401,13 @@ namespace ConfigStatusMax
 				return original;
 			}
 			int totalLevel = currentLevel + bonusLevel;
-			if (totalLevel <= 0 || totalLevel > rankDataList.Count)
+			if (totalLevel <= 0 || totalLevel > levelDataList.Count)
 			{
 				Debug.LogError(string.Format("SetRandomStatValue: totalLevel {0} is Out of Range!", totalLevel));
 				return original;
 			}
-			int min = rankDataList[totalLevel - 1].upgradeMin;
-			int max = rankDataList[totalLevel - 1].upgradeMax;
+			int min = levelDataList[totalLevel - 1].upgradeMin;
+			int max = levelDataList[totalLevel - 1].upgradeMax;
 			return UnityEngine.Random.Range(min, max);
 		}
 

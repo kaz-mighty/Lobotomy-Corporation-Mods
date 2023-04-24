@@ -10,24 +10,24 @@
   </maxStat>
   <statLevel>
     <!-- min is inclusive, but max is exclusive. -->
-    <rank orMore="0" growthRate="0.6">
+    <level orMore="0" growthRate="0.6">
       <upgrade cost ="0" min="15" max="15"/>
-    </rank>
-    <rank orMore="30" growthRate="0.55">
+    </level>
+    <level orMore="30" growthRate="0.55">
       <upgrade cost ="1" min="30" max="37"/>
-    </rank>
-    <rank orMore="45" growthRate="0.5">
+    </level>
+    <level orMore="45" growthRate="0.5">
       <upgrade cost ="2" min="45" max="55"/>
-    </rank>
-    <rank orMore="65" growthRate="0.45">
+    </level>
+    <level orMore="65" growthRate="0.45">
       <upgrade cost ="3" min="65" max="75"/>
-    </rank>
-    <rank orMore="85" growthRate="0.4">
+    </level>
+    <level orMore="85" growthRate="0.4">
       <upgrade cost ="4" min="85" max="92"/>
-    </rank>
-    <rank orMore="100" growthRate="0.4">
+    </level>
+    <level orMore="100" growthRate="0.4">
       <upgrade cost ="6" min="110" max="130"/>
-    </rank>
+    </level>
   </statLevel>
   <upgradeMaxLevel>
     <value>5</value><!--default-->
