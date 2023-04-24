@@ -9,8 +9,7 @@ using AssemblyState;
 
 
 /* TODO:
- * エラーハンドリング
- * xmlが見づらい
+ * xmlが見づらいのをなんとかしたい
  * xmlサンプルを追加、デフォルトを単にステータス上限を上げるだけにするなど
  * 文字のパッチ
  */
@@ -116,55 +115,55 @@ namespace ConfigStatusMax
 
 		static void LoadConfig(string filePath)
 		{
-			if (File.Exists(filePath))
+			var xml = new XmlDocument();
+			xml.Load(filePath);
+
+			var maxStatNode = xml.SelectSingleNode("config/maxStat");
+			if (maxStatNode == null)
 			{
-				var xml = new XmlDocument();
-				xml.Load(filePath);
-				var maxStatNode = xml.SelectSingleNode("config/maxStat");
-				if (maxStatNode != null)
+				throw new XmlException(@"Not found tag ""coufig/maxStat"".");
+			}
+			var valueNodes = maxStatNode.SelectNodes("value");
+			for(var i = 0; i < maxStatValue.Length; i++)
+			{
+				var valueNode = valueNodes[i];
+				if (valueNode == null)
 				{
-					var valueNodes = maxStatNode.SelectNodes("value");
-					for(var i = 0; i < maxStatValue.Length; i++)
-					{
-						var valueNode = valueNodes[i];
-						if (valueNode != null)
-						{
-							Harmony_Patch.maxStatValue[i] = int.Parse(valueNode.InnerText);
-						}
-					}
+					throw new XmlException(@"Not enough ""value"" tags of tag ""config/maxStat"".");
 				}
-				var statLevelNode = xml.SelectSingleNode("config/statLevel");
-				if (statLevelNode != null)
+				Harmony_Patch.maxStatValue[i] = int.Parse(valueNode.InnerText);
+			}
+
+			var statLevelNode = xml.SelectSingleNode("config/statLevel");
+			if (statLevelNode == null)
+			{
+				throw new XmlException(@"Not found tag ""config/statLevel"".");
+			}
+			StatLevel.rankDataList.Clear();
+			var rankNodes = statLevelNode.SelectNodes("rank");
+			foreach(XmlNode rankNode in rankNodes)
+			{
+				StatLevel.rankDataList.Add(new RankData(rankNode));
+			}
+			StatLevel.InitCost();
+
+			var maxLevelNode = xml.SelectSingleNode("config/upgradeMaxLevel");
+			if (maxLevelNode == null)
+			{
+				throw new XmlException(@"Not found tag ""config/upgradeMaxLevel"".");
+			}
+			valueNodes = maxLevelNode.SelectNodes("value");
+			for (var i = 0; i < StatLevel.upgradeMaxLevel.Length; i++)
+			{
+				var valueNode = valueNodes[i];
+				if (valueNode == null)
 				{
-					StatLevel.rankDataList = new List<RankData>();
-					var rankNodes = statLevelNode.SelectNodes("rank");
-					foreach(XmlNode rankNode in rankNodes)
-					{
-						var attributes = rankNode.Attributes;
-						var p1 = int.Parse(attributes.GetNamedItem("orMore").InnerText);
-						var p2 = float.Parse(attributes.GetNamedItem("growthRate").InnerText);
-
-						attributes = rankNode.SelectSingleNode("upgrade").Attributes;
-						var p3 = int.Parse(attributes.GetNamedItem("cost").InnerText);
-						var p4 = int.Parse(attributes.GetNamedItem("min").InnerText);
-						var p5 = int.Parse(attributes.GetNamedItem("max").InnerText);
-
-						StatLevel.rankDataList.Add(new RankData(p1, p2, p3, p4, p5));
-					}
-					StatLevel.InitCost();
+					throw new XmlException(@"Not enough ""value"" tags of tag ""config/upgradeMaxLevel"".");
 				}
-				var maxLevelNode = xml.SelectSingleNode("config/upgradeMaxLevel");
-				if (maxLevelNode != null)
+				StatLevel.upgradeMaxLevel[i] = int.Parse(valueNode.InnerText);
+				if (StatLevel.upgradeMaxLevel[i] > StatLevel.rankDataList.Count)
 				{
-					var valueNodes = maxLevelNode.SelectNodes("value");
-					for (var i = 0; i < StatLevel.upgradeMaxLevel.Length; i++)
-					{
-						var valueNode = valueNodes[i];
-						if (valueNode != null)
-						{
-							StatLevel.upgradeMaxLevel[i] = int.Parse(valueNode.InnerText);
-						}
-					}
+					throw new XmlException(@"The value of tag ""upgradeMaxLevel/value"" is greater than the number of tag ""rank"".");
 				}
 			}
 
@@ -210,6 +209,35 @@ namespace ConfigStatusMax
 			upgradeMin = p4;
 			upgradeMax = p5;
 		}
+		public RankData(XmlNode node)
+		{
+			var attributes = node.Attributes;
+			if (!int.TryParse(attributes.GetNamedItem("orMore").InnerText, out orMore))
+			{
+				throw new XmlException(@"Element ""orMore"" of tag ""config/statLevel/rank"" is missing or not int.");
+			}
+			if (!float.TryParse(attributes.GetNamedItem("growthRate").InnerText, out growthRate)){
+				throw new XmlException(@"Element ""growthRate"" of tag ""config/statLevel/rank"" is missing or not float.");
+			}
+			attributes = node.SelectSingleNode("upgrade")?.Attributes;
+			if (attributes == null)
+			{
+				throw new XmlException(@"Not found tag ""upgrade"".");
+			}
+			if (!int.TryParse(attributes.GetNamedItem("cost").InnerText, out upgradeCost))
+			{
+				throw new XmlException(@"Element ""upgrade"" of tag ""upgrade"" is missing or not int.");
+			}
+			if (!int.TryParse(attributes.GetNamedItem("min").InnerText, out upgradeMin))
+			{
+				throw new XmlException(@"Element ""min"" of tag ""upgrade"" is missing or not int.");
+			}
+			if (!int.TryParse(attributes.GetNamedItem("max").InnerText, out upgradeMax))
+			{
+				throw new XmlException(@"Element ""max"" of tag ""upgrade"" is missing or not int.");
+			}
+		}
+
 		public new string ToString()
 		{
 			return String.Format("{0} {1} {2} {3} {4}", orMore, growthRate, upgradeCost, upgradeMin, upgradeMax);
@@ -218,7 +246,7 @@ namespace ConfigStatusMax
 
 	public static class StatLevel
 	{
-		public static List<RankData> rankDataList = null;
+		public static List<RankData> rankDataList = new List<RankData>();
 		public static int[] upgradeMaxLevel = { 5, 6, 6, 6 };
 		public static float[] diffGrowthRate = { 1.4f, 1.2f, 1f, 1f, 0.8f, 0.6f, 0.4f, 0.2f };
 
@@ -295,10 +323,9 @@ namespace ConfigStatusMax
 				expMulti = diffGrowthRate[levelDiff];
 			}
 
-			var growthRate = 0.0f;
+			var growthRate = 0.6f;
 			if (statLevelEx <= 0 || statLevelEx > rankDataList.Count)
 			{
-				growthRate = rankDataList[rankDataList.Count - 1].growthRate;
 				Debug.LogError("statLevelEx is Out of Range!");
 			}
 			else
