@@ -4,7 +4,7 @@
     <value>100</value><!--default-->
     <value>120</value><!--hokma upgrade-->
     <value>130</value><!--hokma suppress-->
-    <value>150</value><!--after 50 day-->
+    <value>150</value><!--after 50 day clear-->
     <value>180</value><!--after The Seed of Light 100%-->
   </maxStat>
   <statLevel>
@@ -36,5 +36,10 @@
       <upgrade cost ="12" min="170" max="175"/>
     </rank>
   </statLevel>
-  <upgradeMaxLevel>8</upgradeMaxLevel>
+  <upgradeMaxLevel>
+    <value>5</value><!--default-->
+    <value>6</value><!--hokma suppress-->
+    <value>7</value><!--after 50 day clear-->
+    <value>8</value><!--after The Seed of Light 100%-->
+  </upgradeMaxLevel>
 </config>

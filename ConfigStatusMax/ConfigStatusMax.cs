@@ -8,6 +8,12 @@ using Harmony;
 using AssemblyState;
 
 
+/* TODO:
+ * エラーハンドリング
+ * xmlが見づらい
+ * xmlサンプルを追加、デフォルトを単にステータス上限を上げるだけにするなど
+ * 文字のパッチ
+ */
 namespace ConfigStatusMax
 {
 	class Harmony_Patch
@@ -150,13 +156,21 @@ namespace ConfigStatusMax
 				var maxLevelNode = xml.SelectSingleNode("config/upgradeMaxLevel");
 				if (maxLevelNode != null)
 				{
-					StatLevel.upgradeMaxLevel = int.Parse(maxLevelNode.InnerText);
+					var valueNodes = maxLevelNode.SelectNodes("value");
+					for (var i = 0; i < StatLevel.upgradeMaxLevel.Length; i++)
+					{
+						var valueNode = valueNodes[i];
+						if (valueNode != null)
+						{
+							StatLevel.upgradeMaxLevel[i] = int.Parse(valueNode.InnerText);
+						}
+					}
 				}
 			}
 
 			if (State.IsDebug)
 			{
-				var log = "";
+				var log = "maxStatValue: ";
 				foreach (int p in maxStatValue)
 				{
 					log += p.ToString() + " ";
@@ -167,7 +181,13 @@ namespace ConfigStatusMax
 				{
 					Debug.Log(rankdata.ToString());
 				}
-				Debug.Log(StatLevel.upgradeMaxLevel.ToString());
+
+				log = "upgradeMaxLevel: ";
+				foreach(int p in StatLevel.upgradeMaxLevel)
+				{
+					log += p.ToString() + " ";
+				}
+				Debug.Log(log);
 			}
 		}
 
@@ -199,7 +219,7 @@ namespace ConfigStatusMax
 	public static class StatLevel
 	{
 		public static List<RankData> rankDataList = null;
-		public static int upgradeMaxLevel = 6;
+		public static int[] upgradeMaxLevel = { 5, 6, 6, 6 };
 		public static float[] diffGrowthRate = { 1.4f, 1.2f, 1f, 1f, 0.8f, 0.6f, 0.4f, 0.2f };
 
 		
@@ -245,7 +265,6 @@ namespace ConfigStatusMax
 					break;
 				}
 			}
-			Debug.Log(String.Format("CalculateStatLevelforCustomizing: {0}", __result));
 			return false;
 		}
 
@@ -292,16 +311,34 @@ namespace ConfigStatusMax
 				expMulti /= 3f;
 			}
 			__result = expMulti;
-			Debug.Log(String.Format("statLevel: {0}", statLevel));
-			Debug.Log(String.Format("statLevelEx: {0}", statLevelEx));
-			Debug.Log(String.Format("growthRate: {0}", growthRate));
-			Debug.Log(String.Format("expMulti: {0}", __result));
+			if (State.IsDebug)
+			{
+				Debug.Log(String.Format("statLevel: {0}", statLevel));
+				Debug.Log(String.Format("statLevelEx: {0}", statLevelEx));
+				Debug.Log(String.Format("growthRate: {0}", growthRate));
+				Debug.Log(String.Format("expMulti: {0}", __result));
+			}
 			return false;
 		}
 
 		public static bool GetMaxStatLevel(ref int __result)
 		{
-			__result = (!MissionManager.instance.ExistsFinishedBossMission(SefiraEnum.CHOKHMAH)) ? 5 : upgradeMaxLevel;
+			if (GlobalEtcDataModel.instance.hiddenEndingDone)
+			{
+				__result = upgradeMaxLevel[3];
+			}
+			else if (GlobalEtcDataModel.instance.trueEndingDone)
+			{
+				__result = upgradeMaxLevel[2];
+			}
+			else if (MissionManager.instance.ExistsFinishedBossMission(SefiraEnum.CHOKHMAH))
+			{
+				__result = upgradeMaxLevel[1];
+			}
+			else
+			{
+				__result = upgradeMaxLevel[0];
+			}
 			return false;
 		}
 
