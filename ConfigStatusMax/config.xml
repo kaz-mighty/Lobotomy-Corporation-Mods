@@ -5,18 +5,36 @@
     <value>120</value><!--hokma upgrade-->
     <value>130</value><!--hokma suppress-->
     <value>150</value><!--after 50 day-->
-    <value>150</value><!--after The Seed of Light 100%-->
+    <value>180</value><!--after The Seed of Light 100%-->
   </maxStat>
   <statLevel>
     <rank orMore="0" growthRate="0.6">
-      <!--Not yet implemented-->
       <upgrade cost ="0" min="15" max="15"/>
     </rank>
-    <rank orMore="30" growthRate="0.55"/>
-    <rank orMore="45" growthRate="0.5"/>
-    <rank orMore="65" growthRate="0.45"/>
-    <rank orMore="85" growthRate="0.4"/>
-    <rank orMore="100" growthRate="0.4"/>
+    <rank orMore="30" growthRate="0.55">
+      <upgrade cost ="1" min="30" max="37"/>
+    </rank>
+    <rank orMore="45" growthRate="0.5">
+      <upgrade cost ="2" min="45" max="55"/>
+    </rank>
+    <rank orMore="65" growthRate="0.45">
+      <upgrade cost ="3" min="65" max="75"/>
+    </rank>
+    <rank orMore="85" growthRate="0.4">
+      <upgrade cost ="4" min="85" max="92"/>
+    </rank>
+    <rank orMore="100" growthRate="0.4">
+      <upgrade cost ="6" min="110" max="129"/>
+    </rank>
+    <rank orMore="130" growthRate="0.2">
+      <upgrade cost ="8" min="130" max="140"/>
+    </rank>
+    <rank orMore="150" growthRate="0.15">
+      <upgrade cost ="10" min="150" max="155"/>
+    </rank>
+    <rank orMore="170" growthRate="0.12">
+      <upgrade cost ="12" min="170" max="175"/>
+    </rank>
   </statLevel>
-  <upgradeMaxLevel>7</upgradeMaxLevel>
+  <upgradeMaxLevel>8</upgradeMaxLevel>
 </config>
