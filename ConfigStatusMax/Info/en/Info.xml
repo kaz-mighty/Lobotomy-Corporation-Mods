@@ -4,7 +4,7 @@
     <descs>
         <desc>[machine translation]</desc>
         <desc>Allows to change the maximum status and growth rate, etc.</desc>
-        <desc>Values can be set in xml files.</desc>
+        <desc>Values can be set in config.xml.</desc>
         <desc></desc>
         <desc>Author: kaz_mighty</desc>
     </descs>

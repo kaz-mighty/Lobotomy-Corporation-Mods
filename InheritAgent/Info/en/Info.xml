@@ -4,7 +4,7 @@
     <descs>
         <desc>[machine translation]</desc>
         <desc>When you start on day 1, the previous agent is taken over.</desc>
-        <desc>What is taken over can be configured in the xml file.</desc>
+        <desc>What is taken over can be change in config.xml.</desc>
         <desc></desc>
         <desc>Author: kaz_mighty</desc>
     </descs>

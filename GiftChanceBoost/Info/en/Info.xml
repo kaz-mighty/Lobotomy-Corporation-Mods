@@ -4,7 +4,7 @@
     <descs>
         <desc>[machine translation]</desc>
         <desc>When the E.G.O gift is not obtained, the next probability will be increased.</desc>
-        <desc>The probability is managed per gift and is reset at the end of each day.</desc>
+        <desc>The probability is managed per gift and is reset when the gift is obtained or at the end of the day.</desc>
         <desc>The probability can be changed in config.xml.</desc>
         <desc></desc>
         <desc>Author: kaz_mighty</desc>

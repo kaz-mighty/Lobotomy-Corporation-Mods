@@ -3,7 +3,7 @@
     <name>Configurable Status Max</name>
     <descs>
         <desc>ステータスの最大値と成長率などを変更できるようにします。</desc>
-        <desc>値はxmlファイルで設定可能です。</desc>
+        <desc>値はconfig.xmlで設定可能です。</desc>
         <desc></desc>
         <desc></desc>
         <desc>Author: kaz_mighty</desc>

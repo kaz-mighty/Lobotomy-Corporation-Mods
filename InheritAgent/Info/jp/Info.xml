@@ -3,7 +3,7 @@
     <name>Inherit Agent</name>
     <descs>
         <desc>1日目から始めたときに前回のエージェントを引き継ぎます。</desc>
-        <desc>引き継ぐ内容はxmlファイルで設定可能です。</desc>
+        <desc>引き継ぐ内容はconfig.xmlで変更可能です。</desc>
         <desc></desc>
         <desc>Author: kaz_mighty</desc>
     </descs>
