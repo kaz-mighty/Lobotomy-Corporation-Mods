@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <name>Gift Chance Boost</name>
+    <descs>
+        <desc>E.G.O giftを入手できなかったとき、次の確率が上昇するようになる。</desc>
+        <desc>確率はギフト毎に管理され、1日の終わりにリセットされる。</desc>
+        <desc>確率はconfig.xmlで変更可能。</desc>
+        <desc></desc>
+        <desc>Author: kaz_mighty</desc>
+    </descs>
+</info>

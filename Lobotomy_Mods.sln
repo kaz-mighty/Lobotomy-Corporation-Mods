@@ -18,9 +18,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InheritAgent", "InheritAgen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigStatusMax", "ConfigStatusMax\ConfigStatusMax.csproj", "{A6EA2A89-76B9-4BEF-AFBE-55F0B54C5FCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftChanceBoost", "GiftChanceBoost\GiftChanceBoost.csproj", "{3521C2CF-B7F5-47EC-BEE3-F202F21BD4E6}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Common\Common.projitems*{2ecff0ba-000b-418c-9e5a-f912b9a53822}*SharedItemsImports = 13
+		Common\Common.projitems*{3521c2cf-b7f5-47ec-bee3-f202f21bd4e6}*SharedItemsImports = 4
 		Common\Common.projitems*{69f91965-349d-40c9-9b98-7ba25f9e45cb}*SharedItemsImports = 4
 		Common\Common.projitems*{9a43340e-777b-46d8-999c-3711164eb62f}*SharedItemsImports = 4
 		Common\Common.projitems*{a6ea2a89-76b9-4bef-afbe-55f0b54c5fcf}*SharedItemsImports = 4
@@ -47,6 +50,10 @@ Global
 		{A6EA2A89-76B9-4BEF-AFBE-55F0B54C5FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6EA2A89-76B9-4BEF-AFBE-55F0B54C5FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6EA2A89-76B9-4BEF-AFBE-55F0B54C5FCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3521C2CF-B7F5-47EC-BEE3-F202F21BD4E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3521C2CF-B7F5-47EC-BEE3-F202F21BD4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3521C2CF-B7F5-47EC-BEE3-F202F21BD4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3521C2CF-B7F5-47EC-BEE3-F202F21BD4E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
